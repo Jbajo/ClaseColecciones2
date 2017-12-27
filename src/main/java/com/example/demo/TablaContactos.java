@@ -7,7 +7,7 @@ import java.util.Hashtable;
  *
  */
 public class TablaContactos {
-	
+	//falta metodo validar dni
 	private Hashtable<String,String> listaContactos;
 /**
  * Constructor de la clase TablaContactos
@@ -46,7 +46,7 @@ public class TablaContactos {
 	 */
 	
 	public void imprimirContactos() {
-		this.listaContactos.forEach((k,v)->System.out.println("El contacto con DNI --> " + k + " tiene el nombre --> " + v));
+		this.listaContactos.forEach((k,v)->System.out.println("El contacto DNI --> " + k + " tiene el nombre --> " + v));
 	}
 	
 	
