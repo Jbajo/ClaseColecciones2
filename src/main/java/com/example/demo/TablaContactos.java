@@ -46,7 +46,7 @@ public class TablaContactos {
 	 */
 	
 	public void imprimirContactos() {
-		this.listaContactos.forEach((k,v)->System.out.println("El contacto con DNI --> " + k + " tiene el nombre --> " + v));
+		this.listaContactos.forEach((k,v)->System.out.println("Contacto con DNI --> " + k + " tiene el nombre --> " + v));
 	}
 	
 	
