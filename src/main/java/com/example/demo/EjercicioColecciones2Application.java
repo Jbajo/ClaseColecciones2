@@ -13,6 +13,8 @@ public class EjercicioColecciones2Application {
 		SpringApplication.run(EjercicioColecciones2Application.class, args);
 		
 		TablaContactos tabla = new TablaContactos();
+		ValidadorDNI documento;
+		
 		int opcion = 1;
 		String dni = new String();
 		String nombre = new String();
@@ -31,10 +33,16 @@ public class EjercicioColecciones2Application {
 				case 1:
 					System.out.println("Introduzca un DNI");
 					dni=sc.next();
-					sc.nextLine();//limpiamos el buffer
-					System.out.println("Introduzca un nombre");
-					nombre=sc.nextLine();					
-					tabla.aniadirContacto(dni, nombre);
+					 documento = new ValidadorDNI(dni);
+					if(documento.validar()) {
+						sc.nextLine();//limpiamos el buffer
+						System.out.println("Introduzca un nombre");
+						nombre=sc.nextLine();					
+						tabla.aniadirContacto(dni, nombre);
+					}
+					else {
+						System.out.println("DNI erroneo");
+					}
 					break;					
 				case 2:
 					System.out.println("Introduzca un DNI");					

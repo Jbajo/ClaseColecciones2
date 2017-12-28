@@ -27,7 +27,6 @@ public class TablaContactos {
 			this.listaContactos.put(dni, nombre);	
 			
 		}
-		
 	}
 	
 	/**
