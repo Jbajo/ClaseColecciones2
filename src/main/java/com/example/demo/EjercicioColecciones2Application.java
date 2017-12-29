@@ -33,7 +33,7 @@ public class EjercicioColecciones2Application {
 				case 1:
 					System.out.println("Introduzca un DNI");
 					dni=sc.next();					
-					if(ValidadorDNI.validar(dni)) {
+					if(TablaContactos.validar(dni)) {
 						sc.nextLine();//limpiamos el buffer
 						System.out.println("Introduzca un nombre");
 						nombre=sc.nextLine();					
