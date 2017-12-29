@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class ValidadorDNI {
 	
-	public ValidadorDNI(String dni) {
+	public ValidadorDNI() {
 		super();
 	}
 /**
