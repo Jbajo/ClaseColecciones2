@@ -7,7 +7,7 @@ import java.util.Hashtable;
  *
  */
 public class TablaContactos {
-	//falta metodo validar dni
+	
 	private Hashtable<String,String> listaContactos;
 /**
  * Constructor de la clase TablaContactos
@@ -22,11 +22,14 @@ public class TablaContactos {
 	 * @param dni dni del usuario a añadir
 	 * @param nombre nombre del usuario a añadir
 	 */
-	public void aniadirContacto(String dni, String nombre) {
-		if(!this.listaContactos.contains(dni)){
-			this.listaContactos.put(dni, nombre);	
+	public boolean aniadirContacto(String dni, String nombre) {
+		if(!this.listaContactos.containsKey(dni)){
+			this.listaContactos.put(dni, nombre);
+			return true;
 			
 		}
+		else
+			return false;
 	}
 	
 	/**
@@ -34,9 +37,13 @@ public class TablaContactos {
 	 * @param dni dni del usuario a eliminar
 	 */
 	
-	public void eliminarContacto(String dni) {
+	public boolean eliminarContacto(String dni) {
 		if(this.listaContactos.containsKey(dni)) {
 			this.listaContactos.remove(dni);
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 	

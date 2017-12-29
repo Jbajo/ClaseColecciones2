@@ -3,12 +3,14 @@ package com.example.demo;
 import java.util.Hashtable;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class EjercicioColecciones2Application {
 
+	@Autowired
 	public static void main(String[] args) {
 		SpringApplication.run(EjercicioColecciones2Application.class, args);
 		
@@ -32,13 +34,17 @@ public class EjercicioColecciones2Application {
 			switch(opcion) {
 				case 1:
 					System.out.println("Introduzca un DNI");
-					dni=sc.next();
-					 documento = new ValidadorDNI(dni);
-					if(documento.validar()) {
+					dni=sc.next();					
+					if(ValidadorDNI.validar(dni)) {
 						sc.nextLine();//limpiamos el buffer
 						System.out.println("Introduzca un nombre");
 						nombre=sc.nextLine();					
-						tabla.aniadirContacto(dni, nombre);
+						if(tabla.aniadirContacto(dni, nombre)) {
+							System.out.println("Contacto añadido...");
+						}
+						else {
+							System.out.println("Contacto ya existente");
+						}
 					}
 					else {
 						System.out.println("DNI erroneo");
@@ -47,7 +53,12 @@ public class EjercicioColecciones2Application {
 				case 2:
 					System.out.println("Introduzca un DNI");					
 					dni=sc.next();
-					tabla.eliminarContacto(dni);
+					if(tabla.eliminarContacto(dni)) {
+						System.out.println("Elemento eliminado");
+					}
+					else {
+						System.out.println("DNI ERRONEO");
+					}
 					break;
 				case 3:
 					tabla.imprimirContactos();
@@ -61,11 +72,7 @@ public class EjercicioColecciones2Application {
 					
 			}			
 			
-		}while(opcion!=0);
-		
-		
-		
-		
+		}while(opcion!=0);	
 		
 		
 	}

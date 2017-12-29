@@ -9,27 +9,23 @@ import java.util.ArrayList;
  */
 public class ValidadorDNI {
 	
-	private String dni;	
-	
-	
 	public ValidadorDNI(String dni) {
 		super();
-		this.dni = new String(dni);
 	}
 /**
  * 
  * @return true or false si el DNI es correcto
  */
-	public boolean validar() {
+	public static boolean validar(String dni) {
 		
 		String letraMayuscula="";
 		
-		if(this.dni.length()!=9||!Character.isLetter(this.dni.charAt(8)))
+		if(dni.length()!=9||!Character.isLetter(dni.charAt(8)))
 			return false;
 		
-		letraMayuscula = this.dni.substring(8).toUpperCase();
+		letraMayuscula = dni.substring(8).toUpperCase();
 		
-		if(validarNumeros() && calcularLetraDNI().equals(letraMayuscula))
+		if(ValidadorDNI.validarNumeros(dni) && ValidadorDNI.calcularLetraDNI(dni).equals(letraMayuscula))
 			
 			return true;
 		else		
@@ -39,7 +35,7 @@ public class ValidadorDNI {
 		 * 
 		 * @return true or false si todas las posiciones de 0 a 8 son numeros
 		 */
-		public boolean validarNumeros() {
+		public static boolean validarNumeros(String dni) {
 			
 			ArrayList <String> listaNumeros = new ArrayList<> ();
 			final String [] miDNI = new String [] {""};
@@ -48,11 +44,10 @@ public class ValidadorDNI {
 				listaNumeros.add(String.valueOf(i));
 			
 			
-			for(final int [] i = new int [] {0}; i[0]<this.dni.length()-1;i[0]++) {
+			for(final int [] i = new int [] {0}; i[0]<dni.length()-1;i[0]++) {
 				listaNumeros.forEach(k->{
-					if(this.dni.substring(i[0], i[0]+1).equals(k))
+					if(dni.substring(i[0], i[0]+1).equals(k))
 						miDNI[0] +=k;				
-					
 				});		
 				
 			}		
@@ -67,8 +62,8 @@ public class ValidadorDNI {
  * 		
  * @return letra del DNI
  */
-		public String calcularLetraDNI() {
-			int miDNI = Integer.parseInt(this.dni.substring(0,8));
+		public static String calcularLetraDNI(String dni) {
+			int miDNI = Integer.parseInt(dni.substring(0,8));
 			int resto = 0;
 			String letra = "";
 			String [] asignacionLetra = {"T", "R", "W", "A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};
