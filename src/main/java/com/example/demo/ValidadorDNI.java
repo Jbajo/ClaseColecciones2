@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -37,7 +38,7 @@ public class ValidadorDNI {
 		 */
 		public static boolean validarNumeros(String dni) {
 			
-			ArrayList <String> listaNumeros = new ArrayList<> ();
+			List <String> listaNumeros = new ArrayList<> ();
 			final String [] miDNI = new String [] {""};
 						
 			for (int i = 0; i < 10; i++)
