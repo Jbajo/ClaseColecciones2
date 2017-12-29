@@ -14,9 +14,7 @@ public class EjercicioColecciones2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(EjercicioColecciones2Application.class, args);
 		
-		TablaContactos tabla = new TablaContactos();
-		ValidadorDNI documento;
-		
+		TablaContactos tabla = new TablaContactos();		
 		int opcion = 1;
 		String dni = new String();
 		String nombre = new String();
@@ -68,8 +66,7 @@ public class EjercicioColecciones2Application {
 					break;
 				default:
 					System.out.println("Opcion no valida...");
-					break;
-					
+					break;					
 			}			
 			
 		}while(opcion!=0);	
