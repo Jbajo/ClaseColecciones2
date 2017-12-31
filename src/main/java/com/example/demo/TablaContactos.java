@@ -21,8 +21,8 @@ public class TablaContactos {
 	
 	/**
 	 * 
-	 * @param dni dni del usuario a añadir
-	 * @param nombre nombre del usuario a añadir
+	 * @param dni del usuario a añadir
+	 * @param nombre del usuario a añadir
 	 */
 	public boolean aniadirContacto(String dni, String nombre) {
 		if(!this.listaContactos.containsKey(dni)){
@@ -36,7 +36,7 @@ public class TablaContactos {
 	
 	/**
 	 * 
-	 * @param dni dni del usuario a eliminar
+	 * @param dni del usuario a eliminar
 	 */
 	
 	public boolean eliminarContacto(String dni) {
@@ -57,7 +57,13 @@ public class TablaContactos {
 		this.listaContactos.forEach((k,v)->System.out.println("Contacto con DNI --> " + k + " tiene el nombre --> " + v));
 	}
 	
-public static boolean validar(String dni) {
+	/**
+	 * 
+	 * @param dni a validar
+	 * @return true or false si es válido
+	 */
+	
+	public static boolean validar(String dni) {
 		
 		String letraMayuscula="";
 		
@@ -76,7 +82,7 @@ public static boolean validar(String dni) {
 		 * 
 		 * @return true or false si todas las posiciones de 0 a 8 son numeros
 		 */
-		public static boolean validarNumeros(String dni) {
+	public static boolean validarNumeros(String dni) {
 			
 			List <String> listaNumeros = new ArrayList<> ();
 			final String [] miDNI = new String [] {""};
