@@ -88,25 +88,25 @@ public class TablaContactos {
 	public static boolean validarNumeros(String dni) {
 			
 			List <String> listaNumeros = new ArrayList<> ();
-			final String [] miDNI = new String [] {""};
+			String miDNI = "";
 						
 			for (int i = 0; i < 10; i++)
 				listaNumeros.add(String.valueOf(i));
 			
-			
-			for(final int [] i = new int [] {0}; i[0]<dni.length()-1;i[0]++) {
-				listaNumeros.forEach(k->{
-					if(dni.substring(i[0], i[0]+1).equals(k))
-						miDNI[0] +=k;				
-				});		
-				
+			for(int  i = 0; i<dni.length()-1; i++) {
+				for (String string : listaNumeros) {
+					if(dni.substring(i,i+1).equals(string))
+					miDNI+=string;				
+				}
 			}		
 			
-			if(miDNI[0].length()!=8)
+			
+			if(miDNI.length()!=8)
 				return false;
 			else
 				return true;
 		}
+	
 		
 /**
  * 		
