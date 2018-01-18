@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.cice.modelo;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -54,7 +54,10 @@ public class TablaContactos {
 	 */
 	
 	public void imprimirContactos() {
-		this.listaContactos.forEach((k,v)->System.out.println("Contacto con DNI --> " + k + " tiene el nombre --> " + v));
+		for(String clave :this.listaContactos.keySet()) {
+			System.out.println("Contacto con DNI --> " + clave + " tiene el nombre --> " + this.listaContactos.get(clave));	
+		}		
+		
 	}
 	
 	/**
