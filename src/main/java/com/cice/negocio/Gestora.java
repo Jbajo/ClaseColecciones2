@@ -6,11 +6,11 @@ import com.cice.modelo.TablaContactos;
 
 public class Gestora {
 	
-	private TablaContactos tabla = new TablaContactos();
+	private TablaContactos tabla = new TablaContactos();;
 	
 	public void showMenu() {
 		Scanner sc = new Scanner (System.in);
-		int opcion = 0;
+		int opcion = 0;		
 		
 		do {
 			System.out.println("------------------------------------");
@@ -45,7 +45,7 @@ public class Gestora {
 			System.out.println("Opcion no valida...");
 			break;					
 	
-	}
+		}
 
 	}
 	
@@ -53,23 +53,25 @@ public class Gestora {
 		Scanner sc = new Scanner (System.in);
 		String dni;
 		String nombre;
+		String respuesta = "";
 		
-		System.out.println("Introduzca un DNI");
-		dni=sc.next();					
-		if(TablaContactos.validar(dni)) {
-			sc.nextLine();//limpiamos el buffer
-			System.out.println("Introduzca un nombre");
-			nombre=sc.nextLine();					
-			if(tabla.aniadirContacto(dni, nombre)) {
-				System.out.println("Contacto añadido...");
+		do {
+			System.out.println("Introduzca un DNI");
+			dni=sc.nextLine();					
+			if(TablaContactos.validar(dni)) {			
+				System.out.println("Introduzca un nombre");
+				nombre=sc.nextLine();					
+				if(tabla.aniadirContacto(dni, nombre)) 
+					System.out.println("Contacto añadido...");
+				else 
+					System.out.println("Contacto ya existente...");
 			}
-			else {
-				System.out.println("Contacto ya existente");
-			}
-		}
-		else {
-			System.out.println("DNI erroneo");
-		}
+			else 
+				System.out.println("DNI ERRONEO...");
+			
+			System.out.println("¿Quieres crear otro Contacto (s/n)");
+			respuesta=sc.nextLine();
+		}while(respuesta.equals("s"));
 		
 	}
 	
@@ -78,12 +80,12 @@ public class Gestora {
 		String dni;		
 		
 		System.out.println("Introduzca un DNI");					
-		dni=sc.next();
-		if(tabla.eliminarContacto(dni)) {
-			System.out.println("Elemento eliminado");
-		}
-		else {
-			System.out.println("DNI ERRONEO");
-		}
+		dni=sc.next();		
+		if(tabla.eliminarContacto(dni)==0)
+			System.out.println("Elemento eliminado");		
+		else if (tabla.eliminarContacto(dni)==1) 
+			System.out.println("DNI ERRONEO...");		
+		else
+			System.out.println("Debe añadir un Contacto primero...");
 	}
 }
