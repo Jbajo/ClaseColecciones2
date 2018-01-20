@@ -70,7 +70,7 @@ public class TablaContactos {
 	}
 	
 	/**
-	 * Método validar valida un DNI llamando a validarLetraDNI
+	 * Método validar valida un DNI llamando a calcularLetraDNI
 	 * @param dni a validar
 	 * @return true or false si es válido
 	 */
@@ -97,7 +97,5 @@ public class TablaContactos {
 			return asignacionLetra[miDNI%23];
 		
 		}	
-		
-	
 
 }
