@@ -77,7 +77,7 @@ public class TablaContactos {
 	
 	public static boolean validar(String dni) {
 		
-		if(dni.matches("^([0-9]{8}[A-Z])|[XYZ][0-9]{7}[A-Z]$")) {						
+		if(dni.matches("^([0-9]{8}[A-Z])")) {						
 			if(TablaContactos.calcularLetraDNI(dni).equals(String.valueOf(dni.charAt(8))))			
 				return true;
 			else		
