@@ -70,60 +70,31 @@ public class TablaContactos {
 	}
 	
 	/**
-	 * Método validar valida un DNI llamando a las dos validaciones validarNumeros y validarLetraDNI
+	 * Método validar valida un DNI llamando a validarLetraDNI
 	 * @param dni a validar
 	 * @return true or false si es válido
 	 */
 	
 	public static boolean validar(String dni) {
 		
-		String letraMayuscula="";
-		
-		if(dni.length()!=9||!Character.isLetter(dni.charAt(8)))
-			return false;		
-		letraMayuscula = dni.substring(8).toUpperCase();		
-		if(TablaContactos.validarNumeros(dni) && TablaContactos.calcularLetraDNI(dni).equals(letraMayuscula))			
-			return true;
-		else		
-			return false;
+		if(dni.matches("^([0-9]{8}[A-Z])|[XYZ][0-9]{7}[A-Z]$")) {						
+			if(TablaContactos.calcularLetraDNI(dni).equals(String.valueOf(dni.charAt(8))))			
+				return true;
+			else		
+				return false;
+		}
+		return false;
 	}
-		/**
-		 * Método validarNumeros valida los números de un DNI
-		 * @return true or false si todas las posiciones de 0 a 8 son numeros
-		 */
-	public static boolean validarNumeros(String dni) {
-		
-		List <String> listaNumeros = new ArrayList<> ();
-		StringBuilder miDNI = new StringBuilder("");
-					
-		for (int i = 0; i < 10; i++)
-			listaNumeros.add(String.valueOf(i));			
-		for(int  i = 0; i<dni.length()-1; i++) {
-			for (String string : listaNumeros) {
-				if(dni.substring(i,i+1).equals(string))
-				miDNI.append(string);				
-			}
-		}					
-		if(miDNI.length()!=8)
-			return false;
-		else
-			return true;
-}
-
-	
-		
+			
 /**
  * Método calcularLetraDNI calcula la letra del DNI
  * @return letra del DNI
  */
 		public static String calcularLetraDNI(String dni) {
-			int miDNI = Integer.parseInt(dni.substring(0,8));
-			int resto = 0;
-			String letra = "";
+			int miDNI = Integer.parseInt(dni.substring(0,8));						
 			String [] asignacionLetra = {"T", "R", "W", "A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};			
-			resto = miDNI%23;
-			letra = asignacionLetra[resto];
-			return letra;
+			
+			return asignacionLetra[miDNI%23];
 		
 		}	
 		
