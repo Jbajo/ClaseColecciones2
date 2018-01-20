@@ -2,12 +2,16 @@ package com.cice.negocio;
 
 import java.util.Scanner;
 
+import com.cice.modelo.Contacto;
 import com.cice.modelo.TablaContactos;
 
 public class Gestora {
 	
-	private TablaContactos tabla = new TablaContactos();;
+	private TablaContactos tabla = new TablaContactos();
 	
+	/**
+	 * Método showMenu Menú de la aplicación
+	 */
 	public void showMenu() {
 		Scanner sc = new Scanner (System.in);
 		int opcion = 0;		
@@ -26,6 +30,10 @@ public class Gestora {
 		sc.close();
 	}
 	
+	/**
+	 * Método controles invoca a los distintos métodos
+	 * @param opcion seleccionada
+	 */
 	private void controles (int opcion) {
 		
 		switch(opcion) {
@@ -49,31 +57,38 @@ public class Gestora {
 
 	}
 	
+	/**
+	 * Método aniadirContacto agrega un contacto comprobando que el DNI no sea erróneo
+	 * y el contacto no exista previamente
+	 */
 	private void aniadirContacto() {
-		Scanner sc = new Scanner (System.in);
-		String dni;
-		String nombre;
+		Scanner sc = new Scanner (System.in);		
 		String respuesta = "";
+		Contacto contacto;
 		
 		do {
+			contacto = new Contacto();
 			System.out.println("Introduzca un DNI");
-			dni=sc.nextLine();					
-			if(TablaContactos.validar(dni)) {			
-				System.out.println("Introduzca un nombre");
-				nombre=sc.nextLine();					
-				if(tabla.aniadirContacto(dni, nombre)) 
+			contacto.setDni(sc.nextLine());				
+			if(TablaContactos.validar(contacto.getDni())) {			
+				System.out.println("Introduzca un nombre");				
+				contacto.setNombre(sc.nextLine());
+				if(tabla.aniadirContacto(contacto.getDni(), contacto)) 
 					System.out.println("Contacto añadido...");
 				else 
 					System.out.println("Contacto ya existente...");
 			}
 			else 
-				System.out.println("DNI ERRONEO...");
-			
+				System.out.println("DNI ERRONEO...");			
 			System.out.println("¿Quieres crear otro Contacto (s/n)");
-			respuesta=sc.nextLine();
+			respuesta=sc.nextLine();			
 		}while(respuesta.equals("s"));
 		
 	}
+	
+	/**
+	 * Método eliminarContacto elimina un contacto del HashTable comprobando el DNI
+	 */
 	
 	private void eliminarContacto() {
 		Scanner sc = new Scanner (System.in);

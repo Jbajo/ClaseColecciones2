@@ -13,13 +13,12 @@ import java.util.Set;
  */
 public class TablaContactos {
 	
-	private Hashtable<String,String> tablaContactos;	
+	private Hashtable<String, Contacto> tablaContactos;	
 /**
  * Constructor de la clase TablaContactos
  */
-	public TablaContactos() {
-		super();
-		this.tablaContactos = new Hashtable<String, String>();
+	public TablaContactos() {		
+		this.tablaContactos = new Hashtable<String, Contacto>();
 	}
 	
 	/**
@@ -27,9 +26,9 @@ public class TablaContactos {
 	 * @param dni del usuario a añadir
 	 * @param nombre del usuario a añadir
 	 */
-	public boolean aniadirContacto(String dni, String nombre) {
+	public boolean aniadirContacto(String dni, Contacto contacto) {
 		if(!this.tablaContactos.containsKey(dni)){
-			this.tablaContactos.put(dni, nombre);
+			this.tablaContactos.put(dni, contacto);
 			return true;			
 		}
 		else
@@ -64,15 +63,10 @@ public class TablaContactos {
 		Set <String> values = tablaContactos.keySet();
 		
 		for (Iterator<String> iterator = values.iterator(); iterator.hasNext();) {
-			for(Enumeration<String> aux = tablaContactos.elements();aux.hasMoreElements();) {
-				System.out.println("Contacto con DNI --> " + iterator.next() + " tiene el nombre --> " + aux.nextElement());			
+			for(Enumeration<Contacto> aux = tablaContactos.elements();aux.hasMoreElements();) {
+				System.out.println("Contacto con DNI --> " + iterator.next() + " tiene el nombre --> " + aux.nextElement().getNombre());			
 			}
-		}
-			
-//		for(String clave :this.tablaContactos.keySet()) {
-//			System.out.println("Contacto con DNI --> " + clave + " tiene el nombre --> " + this.tablaContactos.get(clave));	
-//		}		
-		
+		}		
 	}
 	
 	/**
@@ -98,23 +92,24 @@ public class TablaContactos {
 		 * @return true or false si todas las posiciones de 0 a 8 son numeros
 		 */
 	public static boolean validarNumeros(String dni) {
-			
-			List <String> listaNumeros = new ArrayList<> ();
-			String miDNI = "";
-						
-			for (int i = 0; i < 10; i++)
-				listaNumeros.add(String.valueOf(i));			
-			for(int  i = 0; i<dni.length()-1; i++) {
-				for (String string : listaNumeros) {
-					if(dni.substring(i,i+1).equals(string))
-					miDNI+=string;				
-				}
-			}					
-			if(miDNI.length()!=8)
-				return false;
-			else
-				return true;
-		}
+		
+		List <String> listaNumeros = new ArrayList<> ();
+		StringBuilder miDNI = new StringBuilder("");
+					
+		for (int i = 0; i < 10; i++)
+			listaNumeros.add(String.valueOf(i));			
+		for(int  i = 0; i<dni.length()-1; i++) {
+			for (String string : listaNumeros) {
+				if(dni.substring(i,i+1).equals(string))
+				miDNI.append(string);				
+			}
+		}					
+		if(miDNI.length()!=8)
+			return false;
+		else
+			return true;
+}
+
 	
 		
 /**

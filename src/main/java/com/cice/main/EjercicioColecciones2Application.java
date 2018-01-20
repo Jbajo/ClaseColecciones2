@@ -7,6 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.cice.negocio.Gestora;
 
 @SpringBootApplication
+/**
+ * 
+ * @author Javier Bajo Chacon  javier.bajochacon@gmail.com
+ *
+ */
 public class EjercicioColecciones2Application {
 
 	@Autowired
