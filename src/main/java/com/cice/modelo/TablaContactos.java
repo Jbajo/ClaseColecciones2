@@ -91,10 +91,10 @@ public class TablaContactos {
  * @return letra del DNI
  */
 		public static String calcularLetraDNI(String dni) {
-			int miDNI = Integer.parseInt(dni.substring(0,8));						
-			String [] asignacionLetra = {"T", "R", "W", "A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};			
+			int DNI = Integer.parseInt(dni.substring(0,8));						
+			String [] letra = {"T", "R", "W", "A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};			
 			
-			return asignacionLetra[miDNI%23];
+			return letra[DNI%23];
 		
 		}	
 
