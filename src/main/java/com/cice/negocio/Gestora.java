@@ -9,15 +9,10 @@ public class Gestora {
 	
 	private TablaContactos tabla;
 	
-	
-	
 	public Gestora(TablaContactos tabla) {
-		
-		this.tabla =  new TablaContactos();
+		this.tabla =  tabla;
 	}
 	
-	
-
 	public Gestora() {
 		this.tabla =  new TablaContactos();
 	}
