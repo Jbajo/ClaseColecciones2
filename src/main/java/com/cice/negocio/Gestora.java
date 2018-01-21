@@ -7,8 +7,20 @@ import com.cice.modelo.TablaContactos;
 
 public class Gestora {
 	
-	private TablaContactos tabla = new TablaContactos();
+	private TablaContactos tabla;
 	
+	
+	
+	public Gestora(TablaContactos tabla) {
+		
+		this.tabla =  new TablaContactos();
+	}
+	
+	
+
+	public Gestora() {
+		this.tabla =  new TablaContactos();
+	}
 	/**
 	 * Método showMenu Menú de la aplicación
 	 */
