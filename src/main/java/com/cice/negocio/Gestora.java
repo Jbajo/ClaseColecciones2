@@ -5,6 +5,12 @@ import java.util.Scanner;
 import com.cice.modelo.Contacto;
 import com.cice.modelo.TablaContactos;
 
+/**
+ * 
+ * @author Javier Bajo Chacon  javier.bajochacon@gmail.com
+ *
+ */
+
 public class Gestora {
 	
 	private TablaContactos tabla;
